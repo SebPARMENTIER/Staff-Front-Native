@@ -8,7 +8,7 @@ const Cards = ({ navigation }) => {
             </Text>
             <Button
                 title='Voir le détails de cette carte'
-                onPress={() => navigation.push('Card')}
+                onPress={() => navigation.navigate('Card')}
             />
         </View>
     );
