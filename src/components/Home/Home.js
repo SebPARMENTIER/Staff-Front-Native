@@ -1,9 +1,9 @@
 import {
   View,
   Text,
-  TextInput,
   SafeAreaView,
   Button,
+  TouchableOpacity,
   StyleSheet
 } from 'react-native';
 
@@ -35,10 +35,10 @@ const Home = ({
     <View style={styles.home}>
       {!isLogged && (
         <>
-          <Text>
+          <Text style={styles.homeHeader}>
             stan
           </Text>
-          <Text style={styles.home_text}>
+          <Text style={styles.homeDesc}>
           Bonjour, veuillez saisir vos identifiants pour vous connecter.
           </Text>
           <SafeAreaView>
@@ -51,6 +51,7 @@ const Home = ({
               value={email}
             />
             <Field
+              style={{ paddingTop: '5%'}}
               name="password"
               textContentType='password'
               placeholder='Mot de passe...'
@@ -59,20 +60,23 @@ const Home = ({
               secureTextEntry
             />
             {isError && (
-              <Text>
+              <Text style={styles.homeConnexionFormError}>
                 Vérifiez vos identifiants de connexion.
               </Text>
             )}
             {isLoading && (
-              <View>
+              <View style={styles.homeConnexionLoading}>
                 <Loading />
               </View>
             )}
             {!isLoading && (
-              <Button
-              title='Valider'
-              onPress={handleSubmit}
-            />
+              <TouchableOpacity style={styles.homeConnexionFormButton}>
+                <Button
+                  title='Valider'
+                  onPress={handleSubmit}
+                  color='#ff1616'
+                />
+              </TouchableOpacity>
             )}
           </SafeAreaView>
         </>
@@ -80,27 +84,30 @@ const Home = ({
       {isLogged && (
         <>
           {isError && (
-            <div className="home-access-error">
+            <Text style={styles.homeAccessError}>
               Une erreur s'est produite, veuillez vous reconnecter.
-            </div>
+            </Text>
           )}
           {!isError && (
             <>
-            <View className="home-access">
-              <View className="home-access-restaurant">
-                <Text className="home-access-restaurant-name">{restaurant.name}</Text>
-                <Text className="home-access-restaurant-adress">{restaurant.adress}</Text>
-                <View className="home-access-restaurant-location">
-                  <Text className="home-access-restaurant-location-zip_code">{restaurant.zip_code}</Text>
-                  <Text className="home-access-restaurant-location-city">{restaurant.city}</Text>
+            <View style={styles.homeAccess}>
+              <View style={styles.homeAccessRestaurant}>
+                <Text style={styles.homeAccessRestaurantName}>{restaurant.name}</Text>
+                <Text style={styles.homeAccessRestaurantAdress}>{restaurant.adress}</Text>
+                <View style={styles.homeAccessRestaurantLocation}>
+                  <Text style={styles.homeAccessRestaurantLocationZipcode}>{restaurant.zip_code}</Text>
+                  <Text style={styles.homeAccessRestaurantLocationCity}>{restaurant.city}</Text>
                 </View>
-                <Text className="home-access-restaurant-phone">{restaurant.phone}</Text>
-                <Text className="home-access-restaurant-email">{restaurant.email}</Text>
+                <Text style={styles.homeAccessRestaurantPhone}>{restaurant.phone}</Text>
+                <Text style={styles.homeAccessRestaurantEmail}>{restaurant.email}</Text>
               </View>
-              <Button
-                title='Accéder aux cartes du restaurant'
-                onPress={handleGetAllCards}
-              />
+              <TouchableOpacity style={styles.homeAccessCardButton}>
+                <Button
+                  title='Accéder aux cartes du restaurant'
+                  onPress={handleGetAllCards}
+                  color='#ff1616'
+                />
+              </TouchableOpacity>
             </View>
             </>
           )}
@@ -114,12 +121,98 @@ const styles = StyleSheet.create({
   home: {
     height: '100%',
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#0e4bef'
+    backgroundColor: '#0e4bef',
+    paddingTop: 100
   },
-  home_text: {
+  homeHeader: {
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: 'white',
+    textShadowColor: '#ff1616',
+    textShadowOffset: {
+        width: 5,
+        height: 5
+    },
+    textShadowRadius: 5,
+    paddingBottom: 100
+  },
+  homeDesc: {
+    color: 'white',
+    textAlign: 'center',
+    paddingHorizontal: 20,
+    paddingBottom: 100
+  },
+  homeConnexionFormError: {
+    color: 'white',
+    paddingBottom: 20
+  },
+  homeConnexionFormButton: {
+    color: 'white',
+    textShadowColor: '#0e4bef',
+    textShadowOffset: {
+        width: 1,
+        height: 1
+    },
+    textShadowRadius: 1,
+    backgroundColor: '#ff1616',
+    borderColor: '#ff5757',
+    borderWidth: 5,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginTop: 30
+  },
+  homeAccess: {
+    textAlign: 'center',
+  },
+  homeAccessError: {
+    color: 'white',
+    textAlign: 'center',
+    paddingHorizontal: 20
+  },
+  homeAccessRestaurant: {
     color: 'white'
+  },
+  homeAccessRestaurantName: {
+    color: 'white',
+    fontSize: 25,
+    fontWeight: 'bold'
+  },
+  homeAccessRestaurantAdress: {
+    color: 'white'
+  },
+  homeAccessRestaurantLocation: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  homeAccessRestaurantLocationZipcode: {
+    color: 'white',
+    paddingRight: 5
+  },
+  homeAccessRestaurantLocationCity: {
+    color: 'white'
+  },
+  homeAccessRestaurantPhone: {
+    color: 'white'
+  },
+  homeAccessRestaurantEmail: {
+    color: 'white'
+  },
+  homeAccessCardButton: {
+    color: 'white',
+    textShadowColor: '#0e4bef',
+    textShadowOffset: {
+        width: 1,
+        height: 1
+    },
+    textShadowRadius: 1,
+    backgroundColor: '#ff1616',
+    borderColor: '#ff5757',
+    borderWidth: 5,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginTop: 30
   }
 });
 

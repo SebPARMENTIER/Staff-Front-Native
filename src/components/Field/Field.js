@@ -19,7 +19,7 @@ const Field = ({
   return (
     <View>
       <TextInput
-        required
+        style={{ marginBottom: 15, padding: 10, height: 30, backgroundColor: 'white' }}
         value={value}
         onChangeText={(text) => handleChange(text)}
         id={inputId}
