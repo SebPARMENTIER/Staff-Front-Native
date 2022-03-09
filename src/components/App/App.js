@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from '../../store';
 
 import Header from '../../containers/Header';
-import Home from '../Home/Home';
+import Home from '../../containers/Home';
 import Cards from '../Cards/Cards';
 import Card from '../Card/Card';
 import Footer from '../Footer/Footer';
