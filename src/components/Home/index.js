@@ -35,17 +35,14 @@ const Home = ({
     <View style={styles.home}>
       {!isLogged && (
         <>
-          <Text style={styles.homeHeader}>
-            stan
-          </Text>
           <Text style={styles.homeDesc}>
           Bonjour, veuillez saisir vos identifiants pour vous connecter.
           </Text>
-          <SafeAreaView>
+          <SafeAreaView style={styles.homeForm}>
             <Field
               autoFocus
               name="email"
-              textContentType='email'
+              textContentType="emailAddress"
               placeholder='Email...'
               onChange={changeField}
               value={email}
@@ -53,7 +50,7 @@ const Home = ({
             <Field
               style={{ paddingTop: '5%'}}
               name="password"
-              textContentType='password'
+              textContentType="password"
               placeholder='Mot de passe...'
               onChange={changeField}
               value={password}
@@ -119,33 +116,28 @@ const Home = ({
 
 const styles = StyleSheet.create({
   home: {
+    width: '100%',
     height: '100%',
-    flex: 1,
     alignItems: 'center',
     backgroundColor: '#0e4bef',
-    paddingTop: 100
-  },
-  homeHeader: {
-    fontSize: 50,
-    fontWeight: 'bold',
-    color: 'white',
-    textShadowColor: '#ff1616',
-    textShadowOffset: {
-        width: 5,
-        height: 5
-    },
-    textShadowRadius: 5,
-    paddingBottom: 100
+    paddingTop: 10
   },
   homeDesc: {
     color: 'white',
+    fontSize: 18,
     textAlign: 'center',
     paddingHorizontal: 20,
-    paddingBottom: 100
+    paddingBottom: 50
+  },
+  homeForm: {
+    width: '70%'
   },
   homeConnexionFormError: {
     color: 'white',
-    paddingBottom: 20
+    textAlign: 'center',
+    paddingTop: 20,
+    paddingBottom: 20,
+    fontWeight: 'bold'
   },
   homeConnexionFormButton: {
     color: 'white',
@@ -171,15 +163,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20
   },
   homeAccessRestaurant: {
-    color: 'white'
+    color: 'white',
   },
   homeAccessRestaurantName: {
     color: 'white',
+    textAlign: 'center',
     fontSize: 25,
     fontWeight: 'bold'
   },
   homeAccessRestaurantAdress: {
-    color: 'white'
+    color: 'white',
+    textAlign: 'center'
   },
   homeAccessRestaurantLocation: {
     flex: 1,
@@ -194,7 +188,8 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   homeAccessRestaurantPhone: {
-    color: 'white'
+    color: 'white',
+    textAlign: 'center'
   },
   homeAccessRestaurantEmail: {
     color: 'white'

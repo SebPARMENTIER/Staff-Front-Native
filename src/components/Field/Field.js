@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const Field = ({
   value,
-  type,
+  textContentType,
   name,
   placeholder,
   onChange,
@@ -19,11 +19,11 @@ const Field = ({
   return (
     <View>
       <TextInput
-        style={{ marginBottom: 15, padding: 10, height: 30, backgroundColor: 'white' }}
+        style={{ marginBottom: 15, padding: 10, height: 50, backgroundColor: 'white' }}
         value={value}
         onChangeText={(text) => handleChange(text)}
         id={inputId}
-        textContentType={type}
+        textContentType={textContentType}
         placeholder={placeholder}
         name={name}
       />
@@ -33,7 +33,7 @@ const Field = ({
 
 Field.propTypes = {
   value: PropTypes.string,
-  type: PropTypes.string,
+  textContentType: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired

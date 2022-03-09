@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Header from "../../components/Header/header";
+import Header from "../../components/Header";
 
 import { clickOnButtonLogout } from '../../actions/user';
 

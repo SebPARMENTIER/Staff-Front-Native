@@ -23,7 +23,7 @@ const Footer = () => {
         maxHeight: '5%',
         backgroundColor: '#ff1616',
         borderTopColor: '#ff5757',
-        borderTopWidth: '5px',
+        borderTopWidth: 5,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
@@ -32,10 +32,10 @@ const Footer = () => {
         color: 'white',
         textShadowColor: '#0e4bef',
         textShadowOffset: {
-            width: '1px',
-            height: '1px'
+            width: 1,
+            height: 1
         },
-        textShadowRadius: '1px'
+        textShadowRadius: 1
     }
   });
   

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Home from "../../components/Home/home";
+import Home from "../../components/Home";
 
 import {
   createSetInputValueAction,
