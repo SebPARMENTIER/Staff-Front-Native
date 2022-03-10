@@ -1,45 +1,58 @@
 import {
-  // Button,
-  // TouchableOpacity,
+  //Button,
+  TouchableOpacity,
   View,
   Text,
   StyleSheet
 } from 'react-native';
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 //import Logout from '../../containers/Logout';
 
 const Header = ({
-  // firstname,
-  // isLogged,
+  onClickLogout,
+  navigation,
+  isLogged,
   // openLogout,
   // onClickArrow
 }) => {
-  
+  const handleLogout = () => {
+    //onClickLogout();
+    console.log('coucou');
+    //navigation.navigate('Home');
+  };
   // const handleOnClickArrow = () => {
   //   onClickArrow();
   // };
   return (
-    <View style={styles.header}>
-      <Text style={styles.headerTitle}>
-        stan  
-      </Text>
-    </View>
+    <>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>
+          stan  
+        </Text>
+      </View>
+      {isLogged && (
+        <TouchableOpacity
+        onPress={handleLogout}
+        >
+          <Text style={styles.headerLogout}>
+            Se déconnecter  
+          </Text>
+        </TouchableOpacity>
+      )}
+    </>
   );
 };
 
-// Header.propTypes = {
-//   firstname: PropTypes.string,
-//   isLogged: PropTypes.bool,
-//   openLogout: PropTypes.bool,
-//   onClickArrow: PropTypes.func
-// };
+Header.propTypes = {
+  isLogged: PropTypes.bool,
+  onClickLogout: PropTypes.func
+};
 
 const styles = StyleSheet.create({
   header: {
     width: '100%',
-    height: '35%',
     backgroundColor: '#ff1616',
     borderBottomColor: '#ff5757',
     borderBottomWidth: 5,
@@ -60,23 +73,24 @@ const styles = StyleSheet.create({
     },
     textShadowRadius: 5,
     paddingTop: 20
-  }
+  },
   // headerNavContent: {
   //   flex: 1,
   //   flexDirection: 'row',
   //   justifyContent: 'center',
   //   alignItems: 'center'
   // },
-  // headerNavContentWelcome: {
-  //   color: 'white',
-  //   textShadowColor: '#0e4bef',
-  //   textShadowOffset: {
-  //       width: 1,
-  //       height: 1
-  //   },
-  //   textShadowRadius: 1,
-  //   paddingRight: 5
-  // },
+  headerLogout: {
+    color: 'white',
+    textShadowColor: '#0e4bef',
+    textShadowOffset: {
+        width: 1,
+        height: 1
+    },
+    textShadowRadius: 1,
+    textAlign: 'right',
+    paddingRight: 10
+  },
   // headerNavContentLogout: {
   //   color: 'white',
   //   textShadowColor: '#0e4bef',

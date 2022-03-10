@@ -48,7 +48,6 @@ const Home = ({
               value={email}
             />
             <Field
-              style={{ paddingTop: '5%'}}
               name="password"
               textContentType="password"
               placeholder='Mot de passe...'
@@ -118,9 +117,9 @@ const styles = StyleSheet.create({
   home: {
     width: '100%',
     height: '100%',
+    paddingTop: 100,
     alignItems: 'center',
-    backgroundColor: '#0e4bef',
-    paddingTop: 10
+    backgroundColor: '#0e4bef'
   },
   homeDesc: {
     color: 'white',
@@ -176,7 +175,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   homeAccessRestaurantLocation: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center'
   },
@@ -192,7 +190,8 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   homeAccessRestaurantEmail: {
-    color: 'white'
+    color: 'white',
+    textAlign: 'center'
   },
   homeAccessCardButton: {
     color: 'white',
