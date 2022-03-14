@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onclickLogout: () => {
+  onClickLogout: () => {
     dispatch(clickOnLogout());
   }
 });

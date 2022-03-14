@@ -18,9 +18,8 @@ const Header = ({
   // onClickArrow
 }) => {
   const handleLogout = () => {
-    //onClickLogout();
-    console.log('coucou');
-    //navigation.navigate('Home');
+    onClickLogout();
+    //navigation.goBack('Home');
   };
   // const handleOnClickArrow = () => {
   //   onClickArrow();
