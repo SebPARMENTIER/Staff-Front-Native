@@ -12,7 +12,7 @@ const authMiddleware = (store) => (next) => (action) => {
     case SUBMIT_LOGIN: {
       const config = {
         method: 'post',
-        url: 'https://seb-stan.herokuapp.com/api/v1/login',
+        url: 'https://seb-staff.herokuapp.com/api/v1/login',
         data: {
           email: state.user.email,
           password: state.user.password,

@@ -22,7 +22,7 @@ const cardsMiddleware = (store) => (next) => (action) => {
     case GET_ALL_CARDS: {
       const config = {
         method: 'get',
-        url: 'https://seb-stan.herokuapp.com/api/v1/card',
+        url: 'https://seb-staff.herokuapp.com/api/v1/card',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.user.token}`,
@@ -40,7 +40,7 @@ const cardsMiddleware = (store) => (next) => (action) => {
     case CREATE_ADD_NEW_CARD: {
       const config = {
         method: 'post',
-        url: 'https://seb-stan.herokuapp.com/api/v1/card',
+        url: 'https://seb-staff.herokuapp.com/api/v1/card',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.user.token}`,
@@ -64,7 +64,7 @@ const cardsMiddleware = (store) => (next) => (action) => {
     case CREATE_UPDATE_CARD: {
       const config = {
         method: 'patch',
-        url: 'https://seb-stan.herokuapp.com/api/v1/card',
+        url: 'https://seb-staff.herokuapp.com/api/v1/card',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.user.token}`,
@@ -88,7 +88,7 @@ const cardsMiddleware = (store) => (next) => (action) => {
     case CREATE_DELETE_CARD: {
       const config = {
         method: 'delete',
-        url: `https://seb-stan.herokuapp.com/api/v1/card/${state.card.cardId}`,
+        url: `https://seb-staff.herokuapp.com/api/v1/card/${state.card.cardId}`,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.user.token}`,
