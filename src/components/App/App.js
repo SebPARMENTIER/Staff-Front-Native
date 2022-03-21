@@ -81,7 +81,7 @@ const App = () => {
               component={HomeStackScreen}
               options={{
                 tabBarIcon: () => (
-                  <Image source={home} style={{ width: 50, height: 50 }} />
+                  <Image source={home} style={{ width: 30, height: 30 }} />
                 )
               }}
             />
@@ -90,7 +90,7 @@ const App = () => {
               component={CardsStackScreen}
               options={{
                 tabBarIcon: () => (
-                  <Image source={cards} style={{ width: 50, height: 50 }} />
+                  <Image source={cards} style={{ width: 30, height: 30 }} />
                 )
               }}
             />

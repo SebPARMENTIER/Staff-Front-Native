@@ -2,7 +2,6 @@ import {
   View,
   Text,
   SafeAreaView,
-  Button,
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator
@@ -42,6 +41,9 @@ const Home = ({
     <View style={styles.home}>
       {!isLogged && (
         <>
+          <Text style={styles.homeHeader}>
+            stan
+          </Text>
           <Text style={styles.homeDesc}>
           Bonjour, veuillez saisir vos identifiants pour vous connecter.
           </Text>
@@ -141,11 +143,24 @@ const styles = StyleSheet.create({
   home: {
     width: '100%',
     height: '100%',
-    paddingTop: 100,
+    paddingTop: 50,
     alignItems: 'center',
     backgroundColor: '#0e4bef',
     borderTopColor: '#ff5757',
     borderTopWidth: 5
+  },
+  homeHeader: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white',
+    textShadowColor: '#ff1616',
+    textShadowOffset: {
+        width: 5,
+        height: 5
+    },
+    textShadowRadius: 5,
+    marginBottom: 50
   },
   homeDesc: {
     color: 'white',
@@ -287,7 +302,7 @@ Home.propTypes = {
     city: PropTypes.string,
     phone: PropTypes.string,
     email: PropTypes.string
-  }),
+  }).isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   getAllCards: PropTypes.func.isRequired,
