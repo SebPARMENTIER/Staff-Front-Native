@@ -1,17 +1,59 @@
-import { StyleSheet, View, StatusBar } from 'react-native';
+import { StyleSheet, View, StatusBar, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Provider } from 'react-redux';
 
 import store from '../../store';
 
-import Header from '../../containers/Header';
+import home from '../../../assets/home.png';
+import cards from '../../../assets/cards.png';
+
 import Home from '../../containers/Home';
 import Cards from '../Cards/Cards';
 import Card from '../Card/Card';
-import Footer from '../Footer/Footer';
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const HomeStackScreen = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#ff1616',
+        },
+        headerTintColor: 'white',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerShadowVisible: false
+      }}
+    >
+      <Stack.Screen name="Accueil" component={Home} />
+    </Stack.Navigator>
+  );
+};
+
+const CardsStackScreen = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#ff1616',
+        },
+        headerTintColor: 'white',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerShadowVisible: false
+      }}
+    >
+      <Stack.Screen name="Cartes" component={Cards} />
+      <Stack.Screen name='Carte' component={Card} />
+    </Stack.Navigator>
+  );
+};
 
 const App = () => {
   return (
@@ -19,23 +61,46 @@ const App = () => {
       <View style={styles.container}>
         <StatusBar hidden />
         <NavigationContainer>
-          <Stack.Navigator
+          <Tab.Navigator
             initialRouteName='Home'
             screenOptions={{
-              headerBackVisible: false,
-              headerTransparent: true,
+              headerShown: false,
+              tabBarHideOnKeyboard: true,
+              tabBarShowLabel: false,
+              tabBarStyle: {
+                backgroundColor: '#ff1616',
+                borderTopColor: '#ff5757',
+                borderTopWidth: 5
+              },
+              tabBarActiveTintColor: '#f0ff0f',
+              tabBarInactiveBackgroundColor: '#ff5757'
             }}
-            >
-            <Stack.Screen name="Home" component={Home} options={{ header: () => <Header /> }}/>
-            <Stack.Screen name='Cards' component={Cards} />
-            <Stack.Screen name='Card' component={Card} />
-          </Stack.Navigator>
+          >
+            <Tab.Screen
+              name="Home"
+              component={HomeStackScreen}
+              options={{
+                tabBarIcon: () => (
+                  <Image source={home} style={{ width: 50, height: 50 }} />
+                )
+              }}
+            />
+            <Tab.Screen
+              name="Cards"
+              component={CardsStackScreen}
+              options={{
+                tabBarIcon: () => (
+                  <Image source={cards} style={{ width: 50, height: 50 }} />
+                )
+              }}
+            />
+          </Tab.Navigator>
         </NavigationContainer>
-        <Footer />
+        {/* <Footer /> */}
       </View>
     </Provider>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

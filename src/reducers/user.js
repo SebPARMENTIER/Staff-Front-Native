@@ -12,6 +12,7 @@ import {
     password: '',
     firstname: '',
     restaurant: {},
+    job: {},
     token: null,
     isError: false,
     isLogged: false,
@@ -32,11 +33,12 @@ import {
           [action.name]: action.value,
         };
       case LOGIN_SUCCESS:
-        const { firstname, restaurant, accessToken } = action.data;
+        const { firstname, restaurant, job, accessToken } = action.data;
         return {
           ...state,
           firstname,
           restaurant,
+          job,
           token: accessToken,
           isError: false,
           isLogged: true,

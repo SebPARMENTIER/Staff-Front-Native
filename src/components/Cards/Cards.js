@@ -8,7 +8,7 @@ const Cards = ({ navigation }) => {
             </Text>
             <Button
                 title='Voir le détails de cette carte'
-                onPress={() => navigation.navigate('Card')}
+                onPress={() => navigation.navigate('Carte')}
             />
         </View>
     );
@@ -20,7 +20,9 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#0e4bef'
+        backgroundColor: '#0e4bef',
+        borderTopColor: '#ff5757',
+        borderTopWidth: 5
     },
     cards_text: {
         color: 'white'

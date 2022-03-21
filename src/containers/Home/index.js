@@ -15,6 +15,8 @@ const mapStateToProps = (state) => ({
   email: state.user.email,
   password: state.user.password,
   restaurant: state.user.restaurant,
+  firstname: state.user.firstname,
+  job: state.user.job,
   isError: state.user.isError,
   isLogged: state.user.isLogged,
   isLoading: state.user.isLoading

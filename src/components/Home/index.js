@@ -4,7 +4,8 @@ import {
   SafeAreaView,
   Button,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  ActivityIndicator
 } from 'react-native';
 
 import PropTypes from 'prop-types';
@@ -15,7 +16,9 @@ const Home = ({
   navigation,
   email,
   password,
+  firstname,
   restaurant,
+  job,
   changeField,
   handleLogin,
   isError,
@@ -62,16 +65,17 @@ const Home = ({
             )}
             {isLoading && (
               <View style={styles.homeConnexionLoading}>
-                <Loading />
+                <ActivityIndicator size="large" animating={true} color="white" />
               </View>
             )}
             {!isLoading && (
-              <TouchableOpacity style={styles.homeConnexionFormButton}>
-                <Button
-                  title='Valider'
-                  onPress={handleSubmit}
-                  color='#ff1616'
-                />
+              <TouchableOpacity
+                style={styles.homeConnexionFormButton}
+                onPress={handleSubmit}
+              >
+                <Text style={styles.homeConnexionFormButtonText}>
+                  VALIDER
+                </Text>
               </TouchableOpacity>
             )}
           </SafeAreaView>
@@ -87,6 +91,11 @@ const Home = ({
           {!isError && (
             <>
             <View style={styles.homeAccess}>
+              <View>
+                <Text>
+                  Bonjour {firstname}, {job.title} de l'établissement
+                </Text>
+              </View>
               <View style={styles.homeAccessRestaurant}>
                 <Text style={styles.homeAccessRestaurantName}>{restaurant.name}</Text>
                 <Text style={styles.homeAccessRestaurantAdress}>{restaurant.adress}</Text>
@@ -119,7 +128,9 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingTop: 100,
     alignItems: 'center',
-    backgroundColor: '#0e4bef'
+    backgroundColor: '#0e4bef',
+    borderTopColor: '#ff5757',
+    borderTopWidth: 5
   },
   homeDesc: {
     color: 'white',
@@ -139,6 +150,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   homeConnexionFormButton: {
+    backgroundColor: '#ff1616',
+    borderColor: '#ff5757',
+    borderWidth: 5,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginTop: 30,
+    
+  },
+  homeConnexionFormButtonText: {
+    height: 45,
     color: 'white',
     textShadowColor: '#0e4bef',
     textShadowOffset: {
@@ -146,12 +167,9 @@ const styles = StyleSheet.create({
         height: 1
     },
     textShadowRadius: 1,
-    backgroundColor: '#ff1616',
-    borderColor: '#ff5757',
-    borderWidth: 5,
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    marginTop: 30
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textAlignVertical: 'center'
   },
   homeAccess: {
     textAlign: 'center',
@@ -221,7 +239,7 @@ Home.propTypes = {
     city: PropTypes.string,
     phone: PropTypes.string,
     email: PropTypes.string
-  }).isRequired,
+  }),
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   getAllCards: PropTypes.func.isRequired,
