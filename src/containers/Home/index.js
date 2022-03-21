@@ -4,7 +4,8 @@ import Home from "../../components/Home";
 
 import {
   createSetInputValueAction,
-  createSubmitAction
+  createSubmitAction,
+  clickOnLogout
 } from '../../actions/user';
 
 import {
@@ -31,6 +32,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getAllCards: () => {
     dispatch(createGetAllCardsAction());
+  },
+  onClickLogout: () => {
+    dispatch(clickOnLogout());
   }
 });
 

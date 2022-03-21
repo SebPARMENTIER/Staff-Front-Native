@@ -24,7 +24,8 @@ const Home = ({
   isError,
   isLogged,
   getAllCards,
-  isLoading
+  isLoading,
+  onClickLogout
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,6 +34,9 @@ const Home = ({
   const handleGetAllCards = () => {
     getAllCards();
     navigation.navigate('Cards');
+  };
+  const handleLogout = () => {
+    onClickLogout();
   };
   return (
     <View style={styles.home}>
@@ -92,8 +96,11 @@ const Home = ({
             <>
             <View style={styles.homeAccess}>
               <View>
-                <Text>
-                  Bonjour {firstname}, {job.title} de l'établissement
+                <Text style={styles.homeAccessWelcome}>
+                  Bonjour {firstname},
+                </Text>
+                <Text style={styles.homeAccessJob}>
+                  {job.title} de l'établissement
                 </Text>
               </View>
               <View style={styles.homeAccessRestaurant}>
@@ -106,12 +113,20 @@ const Home = ({
                 <Text style={styles.homeAccessRestaurantPhone}>{restaurant.phone}</Text>
                 <Text style={styles.homeAccessRestaurantEmail}>{restaurant.email}</Text>
               </View>
-              <TouchableOpacity style={styles.homeAccessCardButton}>
-                <Button
-                  title='Accéder aux cartes du restaurant'
-                  onPress={handleGetAllCards}
-                  color='#ff1616'
-                />
+              <TouchableOpacity
+                style={styles.homeAccessCardButton}
+                onPress={handleGetAllCards}
+              >
+                <Text style={styles.homeAccessCardButtonText}>
+                  ACCEDER AUX CARTES DU RESTAURANT
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={handleLogout}
+              >
+                <Text style={styles.homeAccessLogout}>
+                  Se déconnecter  
+                </Text>
               </TouchableOpacity>
             </View>
             </>
@@ -167,7 +182,6 @@ const styles = StyleSheet.create({
         height: 1
     },
     textShadowRadius: 1,
-    fontWeight: 'bold',
     textAlign: 'center',
     textAlignVertical: 'center'
   },
@@ -178,6 +192,18 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     paddingHorizontal: 20
+  },
+  homeAccessWelcome: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 20
+  },
+  homeAccessJob: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 30
   },
   homeAccessRestaurant: {
     color: 'white',
@@ -190,6 +216,7 @@ const styles = StyleSheet.create({
   },
   homeAccessRestaurantAdress: {
     color: 'white',
+    fontSize: 16,
     textAlign: 'center'
   },
   homeAccessRestaurantLocation: {
@@ -198,17 +225,21 @@ const styles = StyleSheet.create({
   },
   homeAccessRestaurantLocationZipcode: {
     color: 'white',
+    fontSize: 16,
     paddingRight: 5
   },
   homeAccessRestaurantLocationCity: {
-    color: 'white'
+    color: 'white',
+    fontSize: 16
   },
   homeAccessRestaurantPhone: {
     color: 'white',
+    fontSize: 16,
     textAlign: 'center'
   },
   homeAccessRestaurantEmail: {
     color: 'white',
+    fontSize: 16,
     textAlign: 'center'
   },
   homeAccessCardButton: {
@@ -224,7 +255,24 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderRadius: 10,
     paddingHorizontal: 10,
-    marginTop: 30
+    marginTop: 50
+  },
+  homeAccessCardButtonText: {
+    height: 45,
+    color: 'white',
+    textShadowColor: '#0e4bef',
+    textShadowOffset: {
+        width: 1,
+        height: 1
+    },
+    textShadowRadius: 1,
+    textAlign: 'center',
+    textAlignVertical: 'center'
+  },
+  homeAccessLogout: {
+    color: 'white',
+    textAlign: 'center',
+    marginTop: 100
   }
 });
 
@@ -243,6 +291,7 @@ Home.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   getAllCards: PropTypes.func.isRequired,
+  onClickLogout: PropTypes.func.isRequired,
   isError: PropTypes.bool.isRequired,
   isLogged: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired
