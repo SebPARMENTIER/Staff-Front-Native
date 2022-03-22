@@ -9,7 +9,7 @@ import {
 
 import PropTypes from 'prop-types';
 
-import Field from '../Field/Field';
+import Field from '../Field/index.js';
 
 const Home = ({
   navigation,
@@ -31,7 +31,7 @@ const Home = ({
     handleLogin();
     setTimeout(() => {
       getAllCards();
-    }, 1000);
+    }, 750);
   };
   const handleGetAllCards = () => {
     // getAllCards();

@@ -3,10 +3,13 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  ActivityIndicator
+  ActivityIndicator,
+  ScrollView
 } from 'react-native';
 
 import PropTypes from 'prop-types';
+
+import AddNewCardModal from '../../containers/AddNewCardModal';
 
 const Cards = ({
   navigation,
@@ -29,6 +32,7 @@ const Cards = ({
         </View>
       )}
       {isLogged && (
+        
         <View>
           {isLoading && (
             <View>
@@ -37,12 +41,25 @@ const Cards = ({
           )}
           {!isLoading && (
             <>
+            
               <View>
                 <Text style={styles.cardsDescText}>
                   Sélectionnez une carte pour voir le détail.
                 </Text>
+                <View style={styles.cardsAdd}>
+                <TouchableOpacity
+                  style={styles.cardsAddButton}
+                  onPress={handleAddNewCardModal}
+                >
+                  <Text style={styles.cardsAddButtonText}>
+                    AJOUTER UNE NOUVELLE CARTE
+                  </Text>
+                </TouchableOpacity>
               </View>
+              </View>
+              <ScrollView>
               {cardsName.map((card) => (
+                
                 <View key={card.id}>
                   <TouchableOpacity
                     style={styles.cardsListButton}
@@ -56,22 +73,19 @@ const Cards = ({
                     </Text>
                   </TouchableOpacity>
                 </View>
+                
               ))}
-              <View style={styles.cardsAdd}>
-                <TouchableOpacity
-                  style={styles.cardsAddButton}
-                  onPress={handleAddNewCardModal}
-                >
-                  <Text style={styles.cardsAddButtonText}>
-                    AJOUTER UNE NOUVELLE CARTE
-                  </Text>
-                </TouchableOpacity>
-              </View>
+              </ScrollView>
+              
+              
             </>
           )}
         </View>
+        
       )}
+      {openAddNewCardModal && <AddNewCardModal />}
     </View>
+    
   );
 };
 
@@ -95,7 +109,7 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontSize: 16,
-    paddingBottom: 30
+    paddingBottom: 20
   },
   cardsListButton: {
     marginBottom: 25,
@@ -123,7 +137,7 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderRadius: 10,
     marginHorizontal: 45,
-    marginTop: 30,
+    marginBottom: 20,
   },
   cardsAddButtonText: {
     height: 45,
