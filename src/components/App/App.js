@@ -96,7 +96,6 @@ const App = () => {
             />
           </Tab.Navigator>
         </NavigationContainer>
-        {/* <Footer /> */}
       </View>
     </Provider>
   );
