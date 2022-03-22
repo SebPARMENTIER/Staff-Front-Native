@@ -10,7 +10,7 @@ import home from '../../../assets/home.png';
 import cards from '../../../assets/cards.png';
 
 import Home from '../../containers/Home';
-import Cards from '../Cards/Cards';
+import Cards from '../../containers/Cards';
 import Card from '../Card/Card';
 
 const Stack = createNativeStackNavigator();
