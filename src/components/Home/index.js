@@ -29,9 +29,12 @@ const Home = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     handleLogin();
+    setTimeout(() => {
+      getAllCards();
+    }, 1000);
   };
   const handleGetAllCards = () => {
-    getAllCards();
+    // getAllCards();
     navigation.navigate('Cards');
   };
   const handleLogout = () => {
