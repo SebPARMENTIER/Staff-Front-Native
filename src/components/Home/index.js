@@ -186,7 +186,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     marginTop: 30,
-    
   },
   homeConnexionFormButtonText: {
     height: 45,
