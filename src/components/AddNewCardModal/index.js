@@ -137,8 +137,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#77b5fe',
     padding: 10,
     borderRadius: 10,
-    //shadowColor: 'saddlebrown',
-    
   }
 });
 

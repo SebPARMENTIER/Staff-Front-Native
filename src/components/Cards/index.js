@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     borderColor: '#ff5757',
     borderWidth: 5,
     borderRadius: 10,
-    marginHorizontal: 45,
+    marginHorizontal: 25,
     marginBottom: 20,
   },
   cardsAddButtonText: {

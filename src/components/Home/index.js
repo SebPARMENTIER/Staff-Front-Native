@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import {
   View,
   Text,
@@ -29,17 +31,16 @@ const Home = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     handleLogin();
-    setTimeout(() => {
-      getAllCards();
-    }, 750);
   };
   const handleGetAllCards = () => {
-    // getAllCards();
     navigation.navigate('Cards');
   };
   const handleLogout = () => {
     onClickLogout();
   };
+  useEffect(() => {
+    getAllCards();
+  }, [isLogged]);
   return (
     <View style={styles.home}>
       {!isLogged && (
