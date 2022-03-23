@@ -4,7 +4,8 @@ import {
   SafeAreaView,
   TouchableOpacity,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  KeyboardAvoidingView
 } from 'react-native';
 
 import PropTypes from 'prop-types';
@@ -29,7 +30,7 @@ const AddNewCardModal = ({
     onClickEscapeAddNewCardModal();
   };
   return (
-    <View style={styles.addNewCardModal}>
+    <KeyboardAvoidingView behavior='padding' style={styles.addNewCardModal}>
       <View style={styles.addNewCardModalContainer}>
         <Text style={styles.addNewCardModalContainerHeader}>
           Ajoutez une nouvelle carte
@@ -89,7 +90,7 @@ const AddNewCardModal = ({
           )}
         </SafeAreaView>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

@@ -1,7 +1,7 @@
 import {
     View,
     TextInput
-  } from 'react-native';
+} from 'react-native';
   
   import PropTypes from 'prop-types';
   
@@ -19,7 +19,7 @@ import {
     return (
       <View>
         <TextInput
-          style={{ marginBottom: 15, padding: 10, height: 40, backgroundColor: 'white' }}
+          style={{ marginBottom: 15, padding: 10, height: 80, backgroundColor: 'white' }}
           multiline={true}
           numberOfLines={4}
           value={value}
