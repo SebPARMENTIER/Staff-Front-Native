@@ -71,7 +71,6 @@ const Card = ({
             <TouchableOpacity style={styles.cardDrinksHeaderAdd}>
               <Ionicons name="add-circle" size={30} color="#ff1616" />
             </TouchableOpacity>
-            {/* <Text style={styles.cardDrinksHeaderAdd}>+</Text> */}
           </View>
           {card.drinks_card.map((drink) => (
             <View
@@ -105,7 +104,9 @@ const Card = ({
         <View style={styles.cardFoods}>
           <View style={styles.cardFoodsHeader}>
             <Text style={styles.cardFoodsHeaderDesc}>Nos plats</Text>
-            <Text style={styles.cardFoodsHeaderAdd}>+</Text>
+            <TouchableOpacity style={styles.cardFoodsHeaderAdd}>
+              <Ionicons name="add-circle" size={30} color="#ff1616" />
+            </TouchableOpacity>
           </View>
           {card.foods_card.map((food) => (
             <View
@@ -173,7 +174,8 @@ const styles = StyleSheet.create({
   cardDescription: {
     fontStyle: 'italic',
     color: 'white',
-    textAlign: 'left'
+    textAlign: 'left',
+    marginBottom: 15
   },
   cardDrinks: {
     marginVertical: 15,
@@ -234,6 +236,69 @@ const styles = StyleSheet.create({
     marginRight: 15
   },
   cardDrinksDrinkDescription: {
+    width: '75%',
+    fontSize: 12,
+    fontStyle: 'italic'
+  },
+  cardFoods: {
+    marginVertical: 15,
+    padding: 10,
+    backgroundColor: 'lightcoral',
+    borderColor: 'lightsalmon',
+    borderWidth: 5,
+    borderRadius: 5
+  },
+  cardFoodsHeader: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: 20
+  },
+  cardFoodsHeaderDesc: {
+    width: '90%',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textDecorationLine: 'underline'
+  },
+  cardFoodsHeaderAdd: {
+    width: '10%'
+  },
+  cardFoodsFood: {
+    paddingBottom: 15
+  },
+  cardFoodsFoodHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  cardFoodsFoodHeaderElements: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+  cardFoodsFoodHeaderElementsTitle: {
+    marginRight: 10,
+    textShadowColor: 'white',
+    textShadowOffset: {
+        width: 0,
+        height: 2
+    },
+    textShadowRadius: 5
+  },
+  cardFoodsFoodHeaderElementsPrice: {
+    textShadowColor: 'white',
+    textShadowOffset: {
+        width: 0,
+        height: 2
+    },
+    textShadowRadius: 5
+  },
+  cardFoodsFoodHeaderOptions: {
+    flexDirection: 'row'
+  },
+  cardFoodsFoodHeaderOptionsUpdate: {
+    marginRight: 15
+  },
+  cardFoodsFoodDescription: {
     width: '75%',
     fontSize: 12,
     fontStyle: 'italic'
