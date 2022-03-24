@@ -18,7 +18,7 @@ import cards from '../../../assets/cards.png';
 
 import Home from '../../containers/Home';
 import Cards from '../../containers/Cards';
-import Card from '../Card/Card';
+import Card from '../../containers/Card';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

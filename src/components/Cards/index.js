@@ -32,7 +32,6 @@ const Cards = ({
         </View>
       )}
       {isLogged && (
-        
         <View>
           {isLoading && (
             <View>
@@ -41,51 +40,50 @@ const Cards = ({
           )}
           {!isLoading && (
             <>
-            
               <View>
                 <Text style={styles.cardsDescText}>
                   Sélectionnez une carte pour voir le détail.
                 </Text>
                 <View style={styles.cardsAdd}>
-                <TouchableOpacity
-                  style={styles.cardsAddButton}
-                  onPress={handleAddNewCardModal}
-                >
-                  <Text style={styles.cardsAddButtonText}>
-                    AJOUTER UNE NOUVELLE CARTE
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              </View>
-              <ScrollView>
-              {cardsName.map((card) => (
-                
-                <View key={card.id}>
                   <TouchableOpacity
-                    style={styles.cardsListButton}
-                    onPress={() => navigation.navigate('Carte', { id: card.id })}
+                    style={styles.cardsAddButton}
+                    onPress={handleAddNewCardModal}
                   >
-                    <Text style={styles.cardsListButtonTitle}>
-                      {card.title}
-                    </Text>
-                    <Text style={styles.cardsListButtonDesc}>
-                      {card.description}
+                    <Text style={styles.cardsAddButtonText}>
+                      AJOUTER UNE NOUVELLE CARTE
                     </Text>
                   </TouchableOpacity>
                 </View>
-                
-              ))}
+              </View>
+              <ScrollView>
+                {cardsName.map((card) => (
+                  <View key={card.id}>
+                    <TouchableOpacity
+                      style={styles.cardsListButton}
+                      onPress={() => navigation.navigate('Carte', {
+                        id: card.id,
+                        card: card
+                      })}
+                    >
+                      <Text style={styles.cardsListButtonTitle}>
+                        {card.title}
+                      </Text>
+                      <Text style={styles.cardsListButtonDesc}>
+                        {card.description}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+
+                ))}
               </ScrollView>
-              
-              
             </>
           )}
         </View>
-        
+
       )}
       {openAddNewCardModal && <AddNewCardModal />}
     </View>
-    
+
   );
 };
 
@@ -144,8 +142,8 @@ const styles = StyleSheet.create({
     color: 'white',
     textShadowColor: '#0e4bef',
     textShadowOffset: {
-        width: 1,
-        height: 1
+      width: 1,
+      height: 1
     },
     textShadowRadius: 1,
     textAlign: 'center',
