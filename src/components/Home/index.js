@@ -6,7 +6,8 @@ import {
   SafeAreaView,
   TouchableOpacity,
   StyleSheet,
-  ActivityIndicator
+  ActivityIndicator,
+  KeyboardAvoidingView
 } from 'react-native';
 
 import PropTypes from 'prop-types';
@@ -42,7 +43,8 @@ const Home = ({
     getAllCards();
   }, [isLogged]);
   return (
-    <View style={styles.home}>
+    <KeyboardAvoidingView behavior='padding' style={styles.home}>
+    {/* <View style={styles.home}> */}
       {!isLogged && (
         <>
           <Text style={styles.homeHeader}>
@@ -129,8 +131,9 @@ const Home = ({
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={handleLogout}
+                style={styles.homeAccessLogoutButton}
               >
-                <Text style={styles.homeAccessLogout}>
+                <Text style={styles.homeAccessLogoutButtonText}>
                   Se déconnecter  
                 </Text>
               </TouchableOpacity>
@@ -139,7 +142,8 @@ const Home = ({
           )}
         </>
       )}
-    </View>
+    {/* </View> */}
+    </KeyboardAvoidingView>
   );
 };
 
@@ -287,10 +291,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center'
   },
-  homeAccessLogout: {
+  homeAccessLogoutButton: {
+    width: 100,
+    marginVertical: 200,
+    marginHorizontal: 100
+  },
+  homeAccessLogoutButtonText: {
     color: 'white',
     textAlign: 'center',
-    marginTop: 100
   }
 });
 

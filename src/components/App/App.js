@@ -1,4 +1,11 @@
-import { StyleSheet, View, StatusBar, Image } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  StatusBar,
+  Image,
+  Keyboard,
+  TouchableWithoutFeedback
+} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -55,9 +62,16 @@ const CardsStackScreen = () => {
   );
 };
 
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss()}}>
+    {children}
+  </TouchableWithoutFeedback>
+);
+
 const App = () => {
   return (
     <Provider store={store}>
+      <DismissKeyboard>
       <View style={styles.container}>
         <StatusBar hidden />
         <NavigationContainer>
@@ -97,6 +111,7 @@ const App = () => {
           </Tab.Navigator>
         </NavigationContainer>
       </View>
+      </DismissKeyboard>
     </Provider>
   );
 };

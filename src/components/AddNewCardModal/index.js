@@ -31,6 +31,7 @@ const AddNewCardModal = ({
   };
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.addNewCardModal}>
+    {/* <View style={styles.addNewCardModal}> */}
       <View style={styles.addNewCardModalContainer}>
         <Text style={styles.addNewCardModalContainerHeader}>
           Ajoutez une nouvelle carte
@@ -90,6 +91,7 @@ const AddNewCardModal = ({
           )}
         </SafeAreaView>
       </View>
+    {/* </View> */}
     </KeyboardAvoidingView>
   );
 };
