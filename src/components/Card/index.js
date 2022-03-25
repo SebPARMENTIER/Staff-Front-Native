@@ -7,7 +7,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
 //import UpdateCardModal from '../../containers/UpdateCardModal';
-//import DeleteCardModal from '../../containers/DeleteCardModal';
+import DeleteCardModal from '../../containers/DeleteCardModal';
 
 
 
@@ -27,27 +27,23 @@ const Card = ({
     navigation.setOptions({ title: card.title });
   }, []);
   
-
-  console.log('card', id);
-
   // Open updateCardModal and send informations to card container to put them into state to have them when updateCardModal is open
   //const handleUpdateCardModal = () => {
   //onClickUpdateCardModal(cardInfos.id, cardInfos.title, cardInfos.description);
   //};
 
   // Open deleteCardModal and send informations to card container to put them into state to have them when deleteCard Modal is open
-  //const handleDeleteCardModal = () => {
-  //onClickDeleteCardModal(cardInfos.id);
-  //};
+  const handleDeleteCardModal = () => {
+  onClickDeleteCardModal(card.id);
+  };
 
   // Use navigate to go back to /cards once a card is deleted and put cardDeleteSuccess to false
-  // let navigate = useNavigate();
-  // useEffect(() => {
-  //   if (cardDeleteSuccess) {
-  //     navigate('/cards');
-  //     setCardDeleteSuccessToFalse();
-  //   }
-  // }, [cardDeleteSuccess]);
+  useEffect(() => {
+    if (cardDeleteSuccess) {
+      navigation.navigate('Cartes');
+      setCardDeleteSuccessToFalse();
+    }
+  }, [cardDeleteSuccess]);
 
   return (
     <View style={styles.card}>
@@ -59,7 +55,9 @@ const Card = ({
           <TouchableOpacity style={styles.cardHeaderOptionsUpdate}>
             <FontAwesome name='pencil' size={24} color='white' />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.cardHeaderOptionsDelete}>
+          <TouchableOpacity
+            style={styles.cardHeaderOptionsDelete}
+            onPress={handleDeleteCardModal}>
             <FontAwesome name="trash" size={24} color="white" />
           </TouchableOpacity>
         </View>
@@ -141,8 +139,8 @@ const Card = ({
           ))}
         </View>
       </ScrollView>
-      {/* {openUpdateCardModal && <UpdateCardModal />}
-      {openDeleteCardModal && <DeleteCardModal />} */}
+      {/* {/* {openUpdateCardModal && <UpdateCardModal />} */}
+      {openDeleteCardModal && <DeleteCardModal />}
     </View>
   );
 };
