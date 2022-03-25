@@ -23,7 +23,10 @@ const Card = ({
 }) => {
   const { id, card } = route.params;
 
-  navigation.setOptions({ title: card.title });
+  useEffect(() => {
+    navigation.setOptions({ title: card.title });
+  }, []);
+  
 
   console.log('card', id);
 
