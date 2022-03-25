@@ -40,11 +40,11 @@ const DeleteCardModal = ({
               Une erreur s'est produite, veuillez réessayer.
             </Text>
             <TouchableOpacity
-              style={styles.deleteCardModalContainerButtons}
+              style={styles.deleteCardModalContainerButton}
               onPress={handleOnClickEscapeUpdateCardModal}
             >
               <Text
-                style={styles.deleteCardModalContainerButtonsEscape}
+                style={styles.deleteCardModalContainerButtonEscape}
               >
                 Annuler
               </Text>
@@ -52,24 +52,23 @@ const DeleteCardModal = ({
           </>
         )}
         {!isDeleteCardModalError && (
-          <View>
+          <View style={styles.deleteCardModalContainerButtons}>
             <TouchableOpacity
-              style={styles.deleteCardModalContainerButtons}
+              style={styles.deleteCardModalContainerButton}
               onPress={handleOnClickValidateDeleteCardModal}
             >
               <Text
-                style={styles.deleteCardModalContainerButtonsValidate}
+                style={styles.deleteCardModalContainerButtonValidate}
               >
                 Valider
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              sytle={styles.deleteCardModalContainerButtons}
+              style={styles.deleteCardModalContainerButton}
               onPress={handleOnClickEscapeUpdateCardModal}
             >
               <Text
-                style={styles.deleteCardModalContainerButtonsEscape}
-                
+                style={styles.deleteCardModalContainerButtonEscape}
               >
                 Annuler
               </Text>
@@ -96,6 +95,49 @@ const styles = StyleSheet.create({
     left: 0,
     zIndex: 1,
     backgroundColor: 'rgba(129, 125, 125, 0.7)'
+  },
+  deleteCardModalContainer: {
+    backgroundColor: '#e1c699',
+    width: '90%',
+    maxHeight: '35%',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10
+  },
+  deleteCardModalContainerHeader: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: 'saddlebrown',
+    marginBottom: 30
+  },
+  deleteCardModalContainerDesc: {
+    fontSize: 15,
+    fontWeight: 'bold'
+  },
+  deleteCardModalContainerError: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginBottom: 30
+  },
+  deleteCardModalContainerButtons: {
+    width: '80%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginTop: 50
+  },
+  deleteCardModalContainerButton: {
+    backgroundColor: '#77b5fe',
+    padding: 10,
+    borderRadius: 10
+  },
+  deleteCardModalContainerButtonValidate: {
+    color: 'white'
+  },
+  deleteCardModalContainerButtonEscape: {
+    color: 'white'
   }
 });
 

@@ -131,6 +131,10 @@ const styles = StyleSheet.create({
   addNewCardModalContainerForm: {
     width: '80%'
   },
+  addNewCardModalContainerFormError: {
+    fontSize: 15,
+    fontWeight: 'bold'
+  },
   addNewCardModalContainerFormButtons: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -140,6 +144,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#77b5fe',
     padding: 10,
     borderRadius: 10,
+  },
+  addNewCardModalContainerFormButtonsValidate: {
+    color: 'white',
+    fontWeight: 'bold'
+  },
+  addNewCardModalContainerFormButtonsEscape: {
+    color: 'white',
+    fontWeight: 'bold'
   }
 });
 
