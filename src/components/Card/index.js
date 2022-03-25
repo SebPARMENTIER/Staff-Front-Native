@@ -6,12 +6,13 @@ import { useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
-//import UpdateCardModal from '../../containers/UpdateCardModal';
+import UpdateCardModal from '../../containers/UpdateCardModal';
 import DeleteCardModal from '../../containers/DeleteCardModal';
 
 
 
 const Card = ({
+  cardsName,
   route,
   navigation,
   onClickUpdateCardModal,
@@ -21,16 +22,18 @@ const Card = ({
   cardDeleteSuccess,
   setCardDeleteSuccessToFalse
 }) => {
-  const { id, card } = route.params;
+  const { id } = route.params;
+
+  const card = cardsName.find(element => element.id == id);
 
   useEffect(() => {
     navigation.setOptions({ title: card.title });
-  }, []);
+  }, [card]);
   
   // Open updateCardModal and send informations to card container to put them into state to have them when updateCardModal is open
-  //const handleUpdateCardModal = () => {
-  //onClickUpdateCardModal(cardInfos.id, cardInfos.title, cardInfos.description);
-  //};
+  const handleUpdateCardModal = () => {
+  onClickUpdateCardModal(card.id, card.title, card.description);
+  };
 
   // Open deleteCardModal and send informations to card container to put them into state to have them when deleteCard Modal is open
   const handleDeleteCardModal = () => {
@@ -52,7 +55,10 @@ const Card = ({
           {card.title}
         </Text>
         <View style={styles.cardHeaderOptions}>
-          <TouchableOpacity style={styles.cardHeaderOptionsUpdate}>
+          <TouchableOpacity
+            style={styles.cardHeaderOptionsUpdate}
+            onPress={handleUpdateCardModal}
+          >
             <FontAwesome name='pencil' size={24} color='white' />
           </TouchableOpacity>
           <TouchableOpacity
@@ -139,7 +145,7 @@ const Card = ({
           ))}
         </View>
       </ScrollView>
-      {/* {/* {openUpdateCardModal && <UpdateCardModal />} */}
+      {openUpdateCardModal && <UpdateCardModal />}
       {openDeleteCardModal && <DeleteCardModal />}
     </View>
   );
@@ -160,6 +166,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   cardHeaderTitle: {
+    width: '80%',
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white'

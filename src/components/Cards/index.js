@@ -60,10 +60,7 @@ const Cards = ({
                   <View key={card.id}>
                     <TouchableOpacity
                       style={styles.cardsListButton}
-                      onPress={() => navigation.navigate('Carte', {
-                        id: card.id,
-                        card: card
-                      })}
+                      onPress={() => navigation.navigate('Carte', { id: card.id })}
                     >
                       <Text style={styles.cardsListButtonTitle}>
                         {card.title}

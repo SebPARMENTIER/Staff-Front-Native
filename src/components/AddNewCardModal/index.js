@@ -38,7 +38,7 @@ const AddNewCardModal = ({
         </Text>
         <SafeAreaView style={styles.addNewCardModalContainerForm}>
           {!isAddNewCardModalError && (
-            <View style={styles.addNewCardModalContainerFormField}>
+            <View>
               <Field
                 name="title"
                 placeholder="Nom de la carte..."
