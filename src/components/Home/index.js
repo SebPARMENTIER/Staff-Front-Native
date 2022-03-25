@@ -13,6 +13,7 @@ import {
 import PropTypes from 'prop-types';
 
 import Field from '../Field/index.js';
+import PasswordField from '../PasswordField/index.js';
 
 const Home = ({
   navigation,
@@ -62,13 +63,12 @@ const Home = ({
               onChange={changeField}
               value={email}
             />
-            <Field
+            <PasswordField
               name="password"
-              textContentType="password"
+              textContentType={"password"}
               placeholder='Mot de passe...'
               onChange={changeField}
               value={password}
-              secureTextEntry
             />
             {isError && (
               <Text style={styles.homeConnexionFormError}>
