@@ -24,27 +24,33 @@ const Card = ({
   onClickDeleteCardModal,
   openDeleteCardModal,
   cardDeleteSuccess,
-  setCardDeleteSuccessToFalse
+  setCardDeleteSuccessToFalse,
+  isLogged
 }) => {
   // Retrieve card id
   const { id } = route.params;
 
   // Find the card with id in all cards
   const card = cardsName.find(element => element.id == id);
-
-  // Display card name in header dynamically
-  useEffect(() => {
-    navigation.setOptions({ title: card.title });
-  }, [card]);
   
+  useEffect(() => {
+    // Display card name in header dynamically
+    if (isLogged) {
+      navigation.setOptions({ title: card.title });
+    // Go to the top of the stack if user is not logged
+    } else {
+      navigation.popToTop();
+    }
+  }, [card]);
+
   // Open updateCardModal and send informations to card container to put them into state to have them when updateCardModal is open
   const handleUpdateCardModal = () => {
-  onClickUpdateCardModal(card.id, card.title, card.description);
+    onClickUpdateCardModal(card.id, card.title, card.description);
   };
 
   // Open deleteCardModal and send informations to card container to put them into state to have them when deleteCard Modal is open
   const handleDeleteCardModal = () => {
-  onClickDeleteCardModal(card.id);
+    onClickDeleteCardModal(card.id);
   };
 
   // Use navigate to go back to /cards once a card is deleted and put cardDeleteSuccess to false
@@ -57,101 +63,112 @@ const Card = ({
 
   return (
     <View style={styles.card}>
-      <View style={styles.cardHeader}>
-        <Text style={styles.cardHeaderTitle}>
-          {card.title}
-        </Text>
-        <View style={styles.cardHeaderOptions}>
-          <TouchableOpacity
-            style={styles.cardHeaderOptionsUpdate}
-            onPress={handleUpdateCardModal}
-          >
-            <FontAwesome name='pencil' size={24} color='white' />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handleDeleteCardModal}>
-            <FontAwesome name="trash" size={24} color="white" />
-          </TouchableOpacity>
+      {!isLogged && (
+        <View>
+          <Text style={styles.cardIsNotLoggedText}>
+            Veuillez vous connecter pour accéder aux cartes du restaurant.
+          </Text>
         </View>
-      </View>
-      <Text style={styles.cardDescription}>
-        {card.description}
-      </Text>
-      <ScrollView>
-        <View style={styles.cardDrinks}>
-          <View style={styles.cardDrinksHeader}>
-            <Text style={styles.cardDrinksHeaderDesc}>Nos boissons</Text>
-            <TouchableOpacity style={styles.cardDrinksHeaderAdd}>
-              <Ionicons name="add-circle" size={30} color="#ff1616" />
-            </TouchableOpacity>
-          </View>
-          {card.drinks_card.map((drink) => (
-            <View
-              key={drink.id}
-              style={styles.cardDrinksDrink}
-            >
-              <View style={styles.cardDrinksDrinkHeader}>
-                <View style={styles.cardDrinksDrinkHeaderElements}>
-                  <Text style={styles.cardDrinksDrinkHeaderElementsTitle}>
-                    {drink.title}
-                  </Text>
-                  <Text style={styles.cardDrinksDrinkHeaderElementsPrice}>
-                    {drink.price}
-                  </Text>
-                </View>
-                <View style={styles.cardDrinksDrinkHeaderOptions}>
-                  <TouchableOpacity style={styles.cardDrinksDrinkHeaderOptionsUpdate}>
-                    <FontAwesome name='pencil' size={20} color='black' />
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <FontAwesome name="trash" size={20} color="black" />
-                  </TouchableOpacity>
-                </View>
-              </View>
-              <Text style={styles.cardDrinksDrinkDescription}>
-                {drink.description}
-              </Text>
+      )}
+      {isLogged && (
+        <>
+          <View style={styles.cardHeader}>
+            <Text style={styles.cardHeaderTitle}>
+              {card.title}
+            </Text>
+            <View style={styles.cardHeaderOptions}>
+              <TouchableOpacity
+                style={styles.cardHeaderOptionsUpdate}
+                onPress={handleUpdateCardModal}
+              >
+                <FontAwesome name='pencil' size={24} color='white' />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={handleDeleteCardModal}>
+                <FontAwesome name="trash" size={24} color="white" />
+              </TouchableOpacity>
             </View>
-          ))}
-        </View>
-        <View style={styles.cardFoods}>
-          <View style={styles.cardFoodsHeader}>
-            <Text style={styles.cardFoodsHeaderDesc}>Nos plats</Text>
-            <TouchableOpacity style={styles.cardFoodsHeaderAdd}>
-              <Ionicons name="add-circle" size={30} color="#ff1616" />
-            </TouchableOpacity>
           </View>
-          {card.foods_card.map((food) => (
-            <View
-              key={food.id}
-              style={styles.cardFoodsFood}
-            >
-              <View style={styles.cardFoodsFoodHeader}>
-                <View style={styles.cardFoodsFoodHeaderElements}>
-                  <Text style={styles.cardFoodsFoodHeaderElementsTitle}>
-                    {food.title}
-                  </Text>
-                  <Text style={styles.cardFoodsFoodHeaderElementsPrice}>
-                    {food.price}
-                  </Text>
-                </View>
-                <View style={styles.cardFoodsFoodHeaderOptions}>
-                  <TouchableOpacity style={styles.cardFoodsFoodHeaderOptionsUpdate}>
-                    <FontAwesome name='pencil' size={20} color='black' />
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.cardFoodsFoodHeaderOptionsDelete}>
-                    <FontAwesome name="trash" size={20} color="black" />
-                  </TouchableOpacity>
-                </View>
+          <Text style={styles.cardDescription}>
+            {card.description}
+          </Text>
+          <ScrollView>
+            <View style={styles.cardDrinks}>
+              <View style={styles.cardDrinksHeader}>
+                <Text style={styles.cardDrinksHeaderDesc}>Nos boissons</Text>
+                <TouchableOpacity style={styles.cardDrinksHeaderAdd}>
+                  <Ionicons name="add-circle" size={30} color="#ff1616" />
+                </TouchableOpacity>
               </View>
-              <Text style={styles.cardFoodsFoodDescription}>
-                {food.description}
-              </Text>
+              {card.drinks_card.map((drink) => (
+                <View
+                  key={drink.id}
+                  style={styles.cardDrinksDrink}
+                >
+                  <View style={styles.cardDrinksDrinkHeader}>
+                    <View style={styles.cardDrinksDrinkHeaderElements}>
+                      <Text style={styles.cardDrinksDrinkHeaderElementsTitle}>
+                        {drink.title}
+                      </Text>
+                      <Text style={styles.cardDrinksDrinkHeaderElementsPrice}>
+                        {drink.price}
+                      </Text>
+                    </View>
+                    <View style={styles.cardDrinksDrinkHeaderOptions}>
+                      <TouchableOpacity style={styles.cardDrinksDrinkHeaderOptionsUpdate}>
+                        <FontAwesome name='pencil' size={20} color='black' />
+                      </TouchableOpacity>
+                      <TouchableOpacity>
+                        <FontAwesome name="trash" size={20} color="black" />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                  <Text style={styles.cardDrinksDrinkDescription}>
+                    {drink.description}
+                  </Text>
+                </View>
+              ))}
             </View>
-          ))}
-        </View>
-      </ScrollView>
-      {openUpdateCardModal && <UpdateCardModal />}
-      {openDeleteCardModal && <DeleteCardModal />}
+            <View style={styles.cardFoods}>
+              <View style={styles.cardFoodsHeader}>
+                <Text style={styles.cardFoodsHeaderDesc}>Nos plats</Text>
+                <TouchableOpacity style={styles.cardFoodsHeaderAdd}>
+                  <Ionicons name="add-circle" size={30} color="#ff1616" />
+                </TouchableOpacity>
+              </View>
+              {card.foods_card.map((food) => (
+                <View
+                  key={food.id}
+                  style={styles.cardFoodsFood}
+                >
+                  <View style={styles.cardFoodsFoodHeader}>
+                    <View style={styles.cardFoodsFoodHeaderElements}>
+                      <Text style={styles.cardFoodsFoodHeaderElementsTitle}>
+                        {food.title}
+                      </Text>
+                      <Text style={styles.cardFoodsFoodHeaderElementsPrice}>
+                        {food.price}
+                      </Text>
+                    </View>
+                    <View style={styles.cardFoodsFoodHeaderOptions}>
+                      <TouchableOpacity style={styles.cardFoodsFoodHeaderOptionsUpdate}>
+                        <FontAwesome name='pencil' size={20} color='black' />
+                      </TouchableOpacity>
+                      <TouchableOpacity style={styles.cardFoodsFoodHeaderOptionsDelete}>
+                        <FontAwesome name="trash" size={20} color="black" />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                  <Text style={styles.cardFoodsFoodDescription}>
+                    {food.description}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          </ScrollView>
+          {openUpdateCardModal && <UpdateCardModal />}
+          {openDeleteCardModal && <DeleteCardModal />}
+        </>
+      )}
     </View>
   );
 };
@@ -164,6 +181,11 @@ const styles = StyleSheet.create({
     borderTopWidth: 5,
     paddingHorizontal: 20,
     paddingVertical: 10
+  },
+  cardIsNotLoggedText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 16
   },
   cardHeader: {
     flexDirection: 'row',
@@ -229,16 +251,16 @@ const styles = StyleSheet.create({
     marginRight: 10,
     textShadowColor: 'white',
     textShadowOffset: {
-        width: 0,
-        height: 2
+      width: 0,
+      height: 2
     },
     textShadowRadius: 5
   },
   cardDrinksDrinkHeaderElementsPrice: {
     textShadowColor: 'white',
     textShadowOffset: {
-        width: 0,
-        height: 2
+      width: 0,
+      height: 2
     },
     textShadowRadius: 5
   },
@@ -292,16 +314,16 @@ const styles = StyleSheet.create({
     marginRight: 10,
     textShadowColor: 'white',
     textShadowOffset: {
-        width: 0,
-        height: 2
+      width: 0,
+      height: 2
     },
     textShadowRadius: 5
   },
   cardFoodsFoodHeaderElementsPrice: {
     textShadowColor: 'white',
     textShadowOffset: {
-        width: 0,
-        height: 2
+      width: 0,
+      height: 2
     },
     textShadowRadius: 5
   },
@@ -331,7 +353,8 @@ Card.propTypes = {
   setCardDeleteSuccessToFalse: PropTypes.func.isRequired,
   openUpdateCardModal: PropTypes.bool.isRequired,
   openDeleteCardModal: PropTypes.bool.isRequired,
-  cardDeleteSuccess: PropTypes.bool.isRequired
+  cardDeleteSuccess: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool.isRequired
 };
 
 export default Card;

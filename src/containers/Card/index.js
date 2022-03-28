@@ -12,7 +12,8 @@ const mapStateToProps = (state) => ({
   cardsName: state.cards.cardsName,
   openUpdateCardModal: state.card.openUpdateCardModal,
   openDeleteCardModal: state.card.openDeleteCardModal,
-  cardDeleteSuccess: state.card.cardDeleteSuccess
+  cardDeleteSuccess: state.card.cardDeleteSuccess,
+  isLogged: state.user.isLogged
 });
 
 const mapDispatchToProps = (dispatch) => ({
