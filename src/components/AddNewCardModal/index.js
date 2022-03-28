@@ -21,17 +21,18 @@ const AddNewCardModal = ({
   onClickEscapeAddNewCardModal,
   isAddNewCardModalError
 }) => {
+  // Submit add new card form
   const handleSubmit = (event) => {
     event.preventDefault();
     handleAddNewCardModal();
   };
 
+  // Close addNewCardModal and return to initial state when user aborts create new card modal
   const handleOnClickEscapeAddNewCardModal = () => {
     onClickEscapeAddNewCardModal();
   };
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.addNewCardModal}>
-    {/* <View style={styles.addNewCardModal}> */}
       <View style={styles.addNewCardModalContainer}>
         <Text style={styles.addNewCardModalContainerHeader}>
           Ajoutez une nouvelle carte
@@ -91,7 +92,6 @@ const AddNewCardModal = ({
           )}
         </SafeAreaView>
       </View>
-    {/* </View> */}
     </KeyboardAvoidingView>
   );
 };

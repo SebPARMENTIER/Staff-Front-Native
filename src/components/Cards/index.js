@@ -19,6 +19,7 @@ const Cards = ({
   isLoading,
   isLogged
 }) => {
+  // Open addNewCardModal
   const handleAddNewCardModal = () => {
     onClickAddNewCardModal();
   };
@@ -76,11 +77,9 @@ const Cards = ({
             </>
           )}
         </View>
-
       )}
       {openAddNewCardModal && <AddNewCardModal />}
     </View>
-
   );
 };
 

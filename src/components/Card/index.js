@@ -1,4 +1,10 @@
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView
+} from 'react-native';
 
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
@@ -8,8 +14,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 import UpdateCardModal from '../../containers/UpdateCardModal';
 import DeleteCardModal from '../../containers/DeleteCardModal';
-
-
 
 const Card = ({
   cardsName,
@@ -22,10 +26,13 @@ const Card = ({
   cardDeleteSuccess,
   setCardDeleteSuccessToFalse
 }) => {
+  // Retrieve card id
   const { id } = route.params;
 
+  // Find the card with id in all cards
   const card = cardsName.find(element => element.id == id);
 
+  // Display card name in header dynamically
   useEffect(() => {
     navigation.setOptions({ title: card.title });
   }, [card]);
@@ -61,9 +68,7 @@ const Card = ({
           >
             <FontAwesome name='pencil' size={24} color='white' />
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.cardHeaderOptionsDelete}
-            onPress={handleDeleteCardModal}>
+          <TouchableOpacity onPress={handleDeleteCardModal}>
             <FontAwesome name="trash" size={24} color="white" />
           </TouchableOpacity>
         </View>
@@ -97,7 +102,7 @@ const Card = ({
                   <TouchableOpacity style={styles.cardDrinksDrinkHeaderOptionsUpdate}>
                     <FontAwesome name='pencil' size={20} color='black' />
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.cardDrinksDrinkHeaderOptionsDelete}>
+                  <TouchableOpacity>
                     <FontAwesome name="trash" size={20} color="black" />
                   </TouchableOpacity>
                 </View>
