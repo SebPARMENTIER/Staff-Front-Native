@@ -1,2 +1,2 @@
-# Stan-Front-Native
+# Staff-Front-Native
 Case Study

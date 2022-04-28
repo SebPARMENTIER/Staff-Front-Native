@@ -54,7 +54,7 @@ const Home = ({
       {!isLogged && (
         <>
           <Text style={styles.homeHeader}>
-            stan
+            staff
           </Text>
           <Text style={styles.homeDesc}>
             Bonjour, veuillez saisir vos identifiants pour vous connecter.
