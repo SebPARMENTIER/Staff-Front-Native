@@ -13,14 +13,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Provider } from 'react-redux';
 
-import store from '../../store';
+import store from './store';
 
-import home from '../../../assets/home.png';
-import cards from '../../../assets/cards.png';
+import home from '../assets/home.png';
+import cards from '../assets/cards.png';
 
-import Home from '../../containers/Home';
-import Cards from '../../containers/Cards';
-import Card from '../../containers/Card';
+import Home from './containers/Home';
+import Cards from './containers/Cards';
+import Card from './containers/Card';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { apiBaseUrl } from '../const';
+
 import {
   GET_ALL_CARDS,
   CREATE_ADD_NEW_CARD,
@@ -22,7 +24,7 @@ const cardsMiddleware = (store) => (next) => (action) => {
     case GET_ALL_CARDS: {
       const config = {
         method: 'get',
-        url: 'https://seb-staff.herokuapp.com/api/v1/card',
+        url: `${apiBaseUrl}/card`,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.user.token}`,
@@ -40,7 +42,7 @@ const cardsMiddleware = (store) => (next) => (action) => {
     case CREATE_ADD_NEW_CARD: {
       const config = {
         method: 'post',
-        url: 'https://seb-staff.herokuapp.com/api/v1/card',
+        url: `${apiBaseUrl}/card`,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.user.token}`,
@@ -64,7 +66,7 @@ const cardsMiddleware = (store) => (next) => (action) => {
     case CREATE_UPDATE_CARD: {
       const config = {
         method: 'patch',
-        url: 'https://seb-staff.herokuapp.com/api/v1/card',
+        url: `${apiBaseUrl}/card`,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.user.token}`,
@@ -88,7 +90,7 @@ const cardsMiddleware = (store) => (next) => (action) => {
     case CREATE_DELETE_CARD: {
       const config = {
         method: 'delete',
-        url: `https://seb-staff.herokuapp.com/api/v1/card/${state.card.cardId}`,
+        url: `${apiBaseUrl}/card/${state.card.cardId}`,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${state.user.token}`,
